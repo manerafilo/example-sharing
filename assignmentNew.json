@@ -1,0 +1,728 @@
+{
+	"info": {
+		"_postman_id": "5da2f74d-1cf8-45aa-850a-cd0a22903dc8",
+		"name": "assignment",
+		"description": "test for the assignment automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getBooking",
+			"item": [
+				{
+					"name": "bookingID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f19c8a9b-a935-44c8-b127-c5f2b041c9d4",
+								"exec": [
+									"pm.test(\"Getting information for booking1:Response is ok\", function(){",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"Getting the booking id\", function(){",
+									"     var bookingid= pm.response.json();",
+									"     pm.expect(bookingid).not.to.be.undefined;",
+									"    ",
+									"});",
+									"",
+									"pm.test(\"Getting information about the first booking\",function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.firstname).to.eql(\"Mark\");",
+									"    pm.expect(jsonData.lastname).to.eql(\"Brown\");",
+									"    pm.expect(jsonData.totalprice).to.eql(903);",
+									"    pm.expect(jsonData.depositpaid).to.eql(false);",
+									"});",
+									"  pm.test(\"Filtering the check-in/check-out date\", function(){",
+									"     var jsonData = pm.response.json();",
+									"     pm.expect(jsonData.bookingdates.checkin).to.deep.eql(\"2017-01-28\")",
+									" });",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://94.209.90.18:3001/booking/1",
+							"protocol": "http",
+							"host": [
+								"94",
+								"209",
+								"90",
+								"18"
+							],
+							"port": "3001",
+							"path": [
+								"booking",
+								"1"
+							]
+						},
+						"description": "assignment"
+					},
+					"response": []
+				},
+				{
+					"name": "bookingid2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "249ff019-84c3-4ae1-b493-75618fddabac",
+								"exec": [
+									"pm.test(\"Getting information for booking1:Response is ok\", function(){",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"",
+									"pm.test(\"Getting information about the first booking\",function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.firstname).to.eql(\"Susan\");",
+									"    pm.expect(jsonData.lastname).to.eql(\"Smith\");",
+									"    pm.expect(jsonData.totalprice).to.eql(513);",
+									"    pm.expect(jsonData.depositpaid).to.eql(false);",
+									"});",
+									"  pm.test(\"Filtering the check-in/check-out date\", function(){",
+									"     var jsonData = pm.response.json();",
+									"     pm.expect(jsonData.bookingdates.checkin).to.deep.eql(\"2019-03-29\")",
+									" });",
+									"",
+									" pm.test(\"Filtering for additional needs\",function(){",
+									"     var jsonData=pm.response.json();",
+									"     pm.expect(jsonData.additionalneeds).to.eql(\"Breakfast\");",
+									" });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://94.209.90.18:3001/booking/2",
+							"protocol": "http",
+							"host": [
+								"94",
+								"209",
+								"90",
+								"18"
+							],
+							"port": "3001",
+							"path": [
+								"booking",
+								"2"
+							]
+						},
+						"description": "get the information  of the 2.booking"
+					},
+					"response": []
+				},
+				{
+					"name": "getBooking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a1a0e180-a7f9-4cfa-8311-20ccdd862853",
+								"exec": [
+									"pm.test(\"Getting information for booking1:Response is ok\", function(){",
+									"    pm.response.to.have.status(200)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://94.209.90.18:3001/booking/36",
+							"protocol": "http",
+							"host": [
+								"94",
+								"209",
+								"90",
+								"18"
+							],
+							"port": "3001",
+							"path": [
+								"booking",
+								"36"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "All requests for the getting information about the booking",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "createBooking",
+			"item": [
+				{
+					"name": "createBooking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2fded95d-8e2f-4bac-93e5-4a42cbc95de1",
+								"exec": [
+									"pm.test(\"Getting information for booking1:Response is ok\", function(){",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"Getting the booking id\", function(){",
+									"     var bookingid= pm.response.json();",
+									"     pm.expect(bookingid).not.to.be.undefined;",
+									"    ",
+									"});",
+									"",
+									"  pm.test(\"Getting information about the first booking\",function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.booking.firstname).to.deep.eql(\"Mary\");",
+									"    pm.expect(jsonData.booking.lastname).to.deep.eql(\"Raucher\");",
+									"    pm.expect(jsonData.booking.totalprice).to.eql(500);",
+									"    pm.expect(jsonData.booking.depositpaid).to.eql(true);",
+									"});",
+									" pm.test(\"Filtering the booking dates\", function(){",
+									"     var jsonData = pm.response.json();",
+									"     pm.expect(jsonData.booking.bookingdates.checkin).to.deep.eql(\"2017-03-23\")",
+									"     pm.expect(jsonData.booking.bookingdates.checkout).to.deep.eql(\"2019-01-09\")",
+									" });",
+									" ",
+									" pm.test(\"Getting the information about additional needs\", function(){",
+									"     var jsonData = pm.response.json();",
+									"     pm.expect(jsonData.booking.additionalneeds).to.eql(\"Breakfast\");",
+									" });",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    \r\n    {\r\n    \"firstname\": \"Mary\",\r\n    \"lastname\": \"Raucher\",\r\n    \"totalprice\": 500,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2017-03-23\",\r\n        \"checkout\": \"2019-01-09\"\r\n    },\r\n    \r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "94.209.90.18:3001/booking",
+							"host": [
+								"94",
+								"209",
+								"90",
+								"18"
+							],
+							"port": "3001",
+							"path": [
+								"booking"
+							]
+						},
+						"description": "a post request to create a new booking"
+					},
+					"response": []
+				}
+			],
+			"description": "All the requests about creating a booking",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Delete Booking",
+			"item": [
+				{
+					"name": "authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28a1dfe4-828c-44c9-871f-f7004e6a9af0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response includes results\", function(){",
+									"    pm.expect(pm.response.json()).to.include.keys(\"token\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://94.209.90.18:3001/auth",
+							"protocol": "http",
+							"host": [
+								"94",
+								"209",
+								"90",
+								"18"
+							],
+							"port": "3001",
+							"path": [
+								"auth"
+							]
+						},
+						"description": "getting the authorization"
+					},
+					"response": []
+				},
+				{
+					"name": "Deleting one of the bookings",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4eee7caf-3e38-42b8-8d6b-7c982c94818a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e39188fe-e266-455b-b7ae-9b69a962b0b9",
+								"exec": [
+									"pm.test(\"Status code is 201\", function(){",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response should have the message created\", function(){",
+									"    pm.response.to.have.body(\"Created\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "dc54192c926670d",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://94.209.90.18:3001/booking/44?username=admin&password=password123",
+							"protocol": "http",
+							"host": [
+								"94",
+								"209",
+								"90",
+								"18"
+							],
+							"port": "3001",
+							"path": [
+								"booking",
+								"44"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin"
+								},
+								{
+									"key": "password",
+									"value": "password123"
+								}
+							]
+						},
+						"description": "Deleting the booking with the ID 15"
+					},
+					"response": []
+				}
+			],
+			"description": "Deleting one of the duplicated bookings, which I created with the post request",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "update Booking",
+			"item": [
+				{
+					"name": "Update a request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b4416590-9989-455f-b4b9-b0c181568320",
+								"exec": [
+									"pm.test(\"Getting information for booking1:Response is ok\", function(){",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"Getting the booking id\", function(){",
+									"     var bookingid= pm.response.json();",
+									"     pm.expect(bookingid).not.to.be.undefined;",
+									"    ",
+									"});",
+									"",
+									"  pm.test(\"Getting information about the first booking\",function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.firstname).to.deep.eql(\"Matthew\");",
+									"    pm.expect(jsonData.firstname).to.not.eql(\"Mary\");",
+									"    pm.expect(jsonData.lastname).to.deep.eql(\"Anderson\");",
+									"    pm.expect(jsonData.lastname).to.not.eql(\"Raucher\");",
+									"    pm.expect(jsonData.totalprice).to.eql(500);",
+									"    pm.expect(jsonData.depositpaid).to.eql(true);",
+									"});",
+									" pm.test(\"Filtering the booking dates\", function(){",
+									"     var jsonData = pm.response.json();",
+									"     pm.expect(jsonData.bookingdates.checkin).to.deep.eql(\"2017-03-23\")",
+									"     pm.expect(jsonData.bookingdates.checkout).to.deep.eql(\"2019-01-09\")",
+									" });",
+									" ",
+									" pm.test(\"Getting the information about additional needs\", function(){",
+									"     var jsonData = pm.response.json();",
+									"     pm.expect(jsonData.additionalneeds).to.eql(\"Breakfast\");",
+									" });",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Matthew\",\r\n    \"lastname\": \"Anderson\",\r\n    \"totalprice\": 500,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2017-03-23\",\r\n        \"checkout\": \"2019-01-09\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://94.209.90.18:3001/booking/40",
+							"protocol": "http",
+							"host": [
+								"94",
+								"209",
+								"90",
+								"18"
+							],
+							"port": "3001",
+							"path": [
+								"booking",
+								"40"
+							]
+						},
+						"description": "A put request to update the booking"
+					},
+					"response": []
+				}
+			],
+			"description": "Update the current boooking",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "UpdateBookingPartially",
+			"item": [
+				{
+					"name": "UpdateBooking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c8c38ef1-6a32-43de-8440-062d2e14e2f1",
+								"exec": [
+									"pm.test(\"Getting information for booking1:Response is ok\", function(){",
+									"    pm.response.to.have.status(200)",
+									"});",
+									"",
+									"pm.test(\"Getting the booking id\", function(){",
+									"     var bookingid= pm.response.json();",
+									"     pm.expect(bookingid).not.to.be.undefined;",
+									"    ",
+									"});",
+									"",
+									"  pm.test(\"Getting information about the first booking\",function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.firstname).to.deep.eql(\"Maria\");",
+									"    pm.expect(jsonData.firstname).to.not.eql(\"Mary\");",
+									"    pm.expect(jsonData.lastname).to.eql(\"Raucher\");",
+									"    pm.expect(jsonData.totalprice).to.eql(500);",
+									"    pm.expect(jsonData.depositpaid).to.eql(true);",
+									"});",
+									" pm.test(\"Filtering the booking dates\", function(){",
+									"     var jsonData = pm.response.json();",
+									"     pm.expect(jsonData.bookingdates.checkin).to.deep.eql(\"2017-03-23\")",
+									"     pm.expect(jsonData.bookingdates.checkout).to.deep.eql(\"2019-01-09\")",
+									" });",
+									" ",
+									" pm.test(\"Getting the information about additional needs\", function(){",
+									"     var jsonData = pm.response.json();",
+									"     pm.expect(jsonData.additionalneeds).to.eql(\"Lunch\");",
+									" });",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Maria\"\r\n    \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "94.209.90.18:3001/booking/36",
+							"host": [
+								"94",
+								"209",
+								"90",
+								"18"
+							],
+							"port": "3001",
+							"path": [
+								"booking",
+								"36"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Updating the selected booking partially with the patch request",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "healthcheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b4b3df8-fe7b-4b1a-a5d8-b82298bfffaa",
+						"exec": [
+							"pm.test(\"status should be 201 created\",function(){",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://94.209.90.18:3001/ping",
+					"protocol": "http",
+					"host": [
+						"94",
+						"209",
+						"90",
+						"18"
+					],
+					"port": "3001",
+					"path": [
+						"ping"
+					]
+				},
+				"description": "the health check "
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,22 @@
+{
+	"info": {
+		"_postman_id": "a49ecd56-8d0b-496e-835b-e695a1b5c164",
+		"name": "testcol.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "xna-trial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "blabla"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
